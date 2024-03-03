@@ -19,20 +19,13 @@ services:
       - mysql
 
   mysql:
-    image: mysql:5.7
+    image: mysql:8.3
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: database
+      MYSQL_DATABASE: database  
       MYSQL_USER: user
       MYSQL_PASSWORD: user_password
     volumes:
       - ./mysql:/var/lib/mysql
-      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+      - ./src/db.php:/docker-entrypoint-initdb.d/db.php
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - 8081:80
-    environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: password
