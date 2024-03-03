@@ -1,1 +1,2 @@
-# Login-form-with-php-mysql-nginx-in-docker
+
+# Login form with PHP, MySQL and Nginx in Docker
