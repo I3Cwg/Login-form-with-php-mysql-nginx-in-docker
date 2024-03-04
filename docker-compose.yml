@@ -17,6 +17,7 @@ services:
       - ./src:/var/www/html
     depends_on:
       - mysql
+    
 
   mysql:
     image: mysql:8.3
@@ -27,5 +28,3 @@ services:
       MYSQL_PASSWORD: user_password
     volumes:
       - ./mysql:/var/lib/mysql
-      - ./src/db.php:/docker-entrypoint-initdb.d/db.php
-

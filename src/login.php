@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Kiểm tra xem có bản ghi phù hợp hay không
     if ($result->num_rows == 1) {
         // Đăng nhập thành công
-        echo "Đăng nhập thành công!";
+        echo "success";
     } else {
         // Đăng nhập thất bại
         echo "Đăng nhập thất bại!";

@@ -16,17 +16,21 @@ try {
         password VARCHAR(30) NOT NULL
     )");
 
-    // Chèn dữ liệu vào bảng users
-    $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':password', $password);
-
-    $username = 'admin-nhom10';
-    $password = 'admin-nhom10';
-    $stmt->execute();
-
-
-    echo "Data inserted successfully\n";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Lấy dữ liệu từ yêu cầu POST
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        
+        // Chèn dữ liệu vào bảng users
+        $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+        echo "Data inserted successfully";
+    }
+    else {
+        echo "Data insertion failed\n";
+    }
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
