@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
 <title>Login</title>
 <style>
     body {
@@ -98,7 +99,7 @@
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
+            <input type="text" id="email" name="email">
             <span id="email-error" class="error"></span>
         </div>
         <div>
@@ -120,7 +121,6 @@
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- <script src="signin.php"></script> -->
 <script>
 $(document).ready(function() {
     $('#login-form').submit(function(event) {
@@ -172,6 +172,7 @@ $(document).ready(function() {
         }
     });
 
+    //form tạo tài khoản
     $('#CreateAccount').submit(function(event) {
     event.preventDefault();
     var username = $('#create-username').val();
@@ -184,6 +185,7 @@ $(document).ready(function() {
     var confirmError = $('#confirm-error');
     var isValid = true;
 
+    // validate 
     if (username === '') {
         usernameError.text('Username is required');
         isValid = false;
@@ -215,6 +217,7 @@ $(document).ready(function() {
         confirmError.text('');
     }
 
+    // gửi request
     if (isValid) {
         $.ajax({
             type: 'POST',
@@ -249,7 +252,6 @@ $(document).ready(function() {
         document.querySelector('.form-container').classList.remove('form-hidden');
     });
 });
-
 
 </script>
 

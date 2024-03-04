@@ -5,7 +5,7 @@ $password_db = "user_password";
 $dbname = "database";
 
 try {
-    // Tạo kết nối đến cơ sở dữ liệu
+    // conect to mysql
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username_db, $password_db);
     // Thiết lập chế độ lỗi
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -15,13 +15,12 @@ try {
         username VARCHAR(30) NOT NULL,
         password VARCHAR(30) NOT NULL
     )");
-
+    // Lấy data từ post request
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Lấy dữ liệu từ yêu cầu POST
         $username = $_POST["username"];
         $password = $_POST["password"];
         
-        // Chèn dữ liệu vào bảng users
+        // Chèn vào bảng users
         $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $password);
