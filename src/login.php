@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         echo "success";
     } else {
-        echo "Đăng nhập thất bại!";
+        echo "Invalid username or password";
     }
 
     $stmt->close();
